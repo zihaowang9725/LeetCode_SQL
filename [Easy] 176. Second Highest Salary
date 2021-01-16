@@ -21,9 +21,36 @@ For example, given the above Employee table, the query should return 200 as the 
 
 
 --------------------------------------------------
-Answer1 ()
+Notes
+--------------------------------------------------
+
+Skill points: 
+
+1. Nested query
+2. Rename header -> AS
+3. Limit and offset
+4. Distinct
+5. Max()
+6. Only SELECT -> returns a value direrctly. e.g. SELECT 1+1 -> returns 2
+
+--------------------------------------------------
+Answer1 (MySQL and Oracle; Nested query)
 --------------------------------------------------
 
 SELECT max(Salary) as SecondHighestSalary
 FROM Employee
 where Salary < (SELECT max(Salary) FROM Employee);
+
+
+--------------------------------------------------
+Answer2 (MySQL; SELECT null -> returns null)
+--------------------------------------------------
+
+SELECT
+    (SELECT DISTINCT
+            Salary
+        FROM
+            Employee
+        ORDER BY Salary DESC
+        LIMIT 1 OFFSET 1) AS SecondHighestSalary
+;
