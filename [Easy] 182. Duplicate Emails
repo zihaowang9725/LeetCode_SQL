@@ -1,0 +1,63 @@
+--------------------------------------------------
+Question
+--------------------------------------------------
+
+Write a SQL query to find all duplicate emails in a table named Person.
+
++----+---------+
+| Id | Email   |
++----+---------+
+| 1  | a@b.com |
+| 2  | c@d.com |
+| 3  | a@b.com |
++----+---------+
+For example, your query should return the following for the above table:
+
++---------+
+| Email   |
++---------+
+| a@b.com |
++---------+
+Note: All emails are in lowercase.
+
+
+--------------------------------------------------
+Notes
+--------------------------------------------------
+
+Skill points: 
+
+1. Difference between HAVIING and WHERE:
+    a. A WHERE clause is used is filter records from a result.  The filter occurs before any groupings are made
+    b. A HAVING clause is used to filter values from a group
+
+2. GROUP BY:
+    a. To group rows that have the same values into summary rows
+    b. GROUP BY statement is often used with aggregate functions (COUNT, MAX, MIN, SUM, AVG) to group the result-set by one or more columns
+
+3. Order: WHERE > GROUP BY > HAVING > ORDER BY
+    
+4. Temporary table: mush has its own alias otherwise there will be error
+
+--------------------------------------------------
+Answer1 - 251ms (GROUP BY; HAVING)
+--------------------------------------------------
+
+SELECT Email
+FROM Person
+GROUP BY Email
+HAVING COUNT(Email) > 1;
+
+
+--------------------------------------------------
+Answer2 - 268ms (Temporary table; Nested query)
+--------------------------------------------------
+
+select Email from
+(
+  select Email, count(Email) as num
+  from Person
+  group by Email
+) as statistic
+where num > 1
+;
