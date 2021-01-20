@@ -1,0 +1,64 @@
+--------------------------------------------------
+Question
+--------------------------------------------------
+
+Suppose that a website contains two tables, the Customers table and the Orders table. Write a SQL query to find all customers who never order anything.
+
+Table: Customers.
+
++----+-------+
+| Id | Name  |
++----+-------+
+| 1  | Joe   |
+| 2  | Henry |
+| 3  | Sam   |
+| 4  | Max   |
++----+-------+
+Table: Orders.
+
++----+------------+
+| Id | CustomerId |
++----+------------+
+| 1  | 3          |
+| 2  | 1          |
++----+------------+
+Using the above tables as example, return the following:
+
++-----------+
+| Customers |
++-----------+
+| Henry     |
+| Max       |
++-----------+
+
+--------------------------------------------------
+Note
+--------------------------------------------------
+
+Skill points:
+
+1. IN: The IN operator allows you to specify multiple values in a WHERE clause.
+2. NOT: The NOT operator displays a record if the condition(s) is NOT TRUE.
+3. NOT IN
+4. Left JOIN
+5. IS NULL: Condition statement
+6. ISNULL(): Check if there is null value within a string
+
+--------------------------------------------------
+Answer1 (NOT IN)
+--------------------------------------------------
+select Name as Customers
+from Customers a
+where a.Id not in(
+    select b.customerId from Orders b
+    );
+    
+    
+    
+--------------------------------------------------
+Answer2 (LEFT JOIN; IS NULL)
+--------------------------------------------------    
+select Name as Customers
+from Customers c 
+left join Orders o on c.Id = o.CustomerId
+where o.Id is null;
