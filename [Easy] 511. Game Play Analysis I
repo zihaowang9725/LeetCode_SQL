@@ -50,12 +50,21 @@ Skill points:
 
 1. min()
 2. GROUP BY
+3. Shortcut for 
 
 
 --------------------------------------------------
-Answer
+Answer1
 --------------------------------------------------
 
 select player_id, min(event_date) as first_login
 from Activity
 group by player_id;
+
+--------------------------------------------------
+Answer2
+--------------------------------------------------
+
+select player_id, min(event_date) as first_login
+from Activity
+group by 1;
