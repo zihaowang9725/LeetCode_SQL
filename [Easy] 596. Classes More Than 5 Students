@@ -1,0 +1,57 @@
+--------------------------------------------------
+Question
+--------------------------------------------------
+
+There is a table courses with columns: student and class
+
+Please list out all classes which have more than or equal to 5 students.
+
+For example, the table:
+
++---------+------------+
+| student | class      |
++---------+------------+
+| A       | Math       |
+| B       | English    |
+| C       | Math       |
+| D       | Biology    |
+| E       | Math       |
+| F       | Computer   |
+| G       | Math       |
+| H       | Math       |
+| I       | Math       |
++---------+------------+
+Should output:
+
++---------+
+| class   |
++---------+
+| Math    |
++---------+
+
+--------------------------------------------------
+Note
+--------------------------------------------------
+
+Skill points:
+
+1. Difference between HAVIING and WHERE:
+    a. A WHERE clause is used is filter records from a result.  The filter occurs before any groupings are made
+    b. A HAVING clause is used to filter values from a group
+
+2. GROUP BY:
+    a. To group rows that have the same values into summary rows
+    b. GROUP BY statement is often used with aggregate functions (COUNT, MAX, MIN, SUM, AVG) to group the result-set by one or more columns
+
+3. Order: WHERE > GROUP BY > HAVING > ORDER BY
+
+4. COUNT (DISTINCT)
+
+--------------------------------------------------
+Answer
+--------------------------------------------------
+
+select class
+from courses
+group by class
+having count(distinct student) >= 5;
