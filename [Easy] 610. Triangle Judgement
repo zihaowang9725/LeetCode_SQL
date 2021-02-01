@@ -33,7 +33,7 @@ Skill points:
 
 
 --------------------------------------------------
-Answer
+Answer1: use CASE WHEN
 --------------------------------------------------
 
 SELECT *, CASE
@@ -42,3 +42,19 @@ SELECT *, CASE
                ELSE "No"
        END as  triangle
 FROM triangle;
+
+
+--------------------------------------------------
+Answer2: use IF
+--------------------------------------------------
+
+select *, if(x + y > z and x + z > y and z + y > x, "Yes", "No") as triangle
+from triangle;
+
+--------------------------------------------------
+Answer2: use IF (omit "as")
+--------------------------------------------------
+select *, if(x + y > z and x + z > y and z + y > x, "Yes", "No") triangle
+from triangle;
+
+
