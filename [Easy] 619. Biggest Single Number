@@ -22,6 +22,10 @@ For the sample data above, your query should return the following result:
 +---+
 | 6 |
 
+Note:
+If there is no such number, just output null.
+
+
 --------------------------------------------------
 Note
 --------------------------------------------------
