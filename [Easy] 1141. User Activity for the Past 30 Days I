@@ -67,4 +67,4 @@ from activity
 where activity_date between '2019-06-28' and '2019-07-27'
 --WHERE datediff('2019-07-27',activity_date) < 30
 group by activity_date
-having count(distinct(activity_type)) >= 1;
+having count(activity_type) >= 1;
