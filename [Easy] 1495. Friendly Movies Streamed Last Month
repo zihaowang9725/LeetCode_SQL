@@ -95,7 +95,7 @@ Answear
 
 select distinct(title) TITLE 
 from TVProgram tv 
-left join Content co on tv.content_id = co.content_id
+join Content co on tv.content_id = co.content_id
 where program_date like '2020-06%' and co.kids_content = 'Y' and co.content_type = 'Movies';
 
 
