@@ -100,3 +100,12 @@ where program_date like '2020-06%' and co.kids_content = 'Y' and co.content_type
 
 
 
+--------------------------------------------------
+Other method of extractinig month:
+--------------------------------------------------
+
+1. program_date REGEXP '^2020-06'
+2. LEFT(program_date, 7) = '2020-06'
+3. EXTRACT(YEAR_MONTH FROM program_date) = '2020-06'
+4. program_date BETWEEN '2020-06-01' AND '2020-06-30'
+5. DATEIFF('2020-06-30', PROGRAM_DATE) between 0 and 29
